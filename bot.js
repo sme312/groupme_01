@@ -6,7 +6,7 @@ function respond() {
   var request = JSON.parse(this.req.chunks[0]),
       botRegexKya = /(.|)*kya!~/;
   
-  var waifuPhrases = [ "_ is the best!"]
+  var waifuPhrases = [ "Did you know _ is the best?"]
 
   if(request.text && botRegexKya.test(request.text)) {
     this.res.writeHead(200);
