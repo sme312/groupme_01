@@ -10,7 +10,7 @@ function respond() {
 
   if(request.text && botRegexKya.test(request.text)) {
     this.res.writeHead(200);
-    postMessage(getReturnString(waifuPhrases[getRandomInt(0,waifuPhrases.length)]));
+    postMessage(getReturnString(waifuPhrases[getRandomInt(0,waifuPhrases.length)], request.name));
     this.res.end();
   }
   else {
@@ -55,8 +55,8 @@ function postMessage(response) {
   botReq.end(JSON.stringify(body));
 }
 
-function getReturnString(phrase){
-  return phrase;
+function getReturnString(phrase, reqName){
+  return phrase + reqName;
 }  
 
 function getRandomInt(min, max) {
