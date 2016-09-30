@@ -57,7 +57,7 @@ function postMessage(response) {
 
 function getReturnString(phrase, reqName){
   var indexOfHolder = phrase.indexOf('_');
-  return phrase + reqName + indexOfHolder.toString();
+  return phrase.substr(0, indexOfHolder) + reqName + phrase.substr(indexOfHolder+phrase.length);
 }  
 
 function getRandomInt(min, max) {
