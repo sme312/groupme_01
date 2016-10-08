@@ -2,10 +2,13 @@ var HTTPS = require('https');
 
 var botID = process.env.BOT_ID;
 
+
+
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
       botRegexKya = /(.|)*kya!~/;
-      botRegexKyaa = /(.|)*kyaa!~/;
+      botname = /(.|)*kyaa!~/;
+      botsave = /(.|)*save/;
   
   var waifuPhrases = [ "https://pbs.twimg.com/media/B8YdqjxIQAAU87L.jpg", "It's not like I l-like you or anything...", 
                       "B-B-baka!", "My senpai is the best!", "But isn't that... lewd?", "Kemy-kun is sugoi, but not as sugoi as senpai!", "Noooo!",
@@ -16,9 +19,13 @@ function respond() {
     postMessage(waifuPhrases[getRandomInt(0,waifuPhrases.length)]);
     this.res.end();
   }
-  else if(request.text && botRegexKyaa.test(request.text)) {
+  else if(request.text && botname.test(request.text)) {
     this.res.writeHead(200);
     postMessage("test");
+    this.res.end();
+  }
+  else if(request.text && botsave.test(request.text)) {
+    saveProgress();
     this.res.end();
   }
   else {
@@ -26,6 +33,10 @@ function respond() {
     this.res.writeHead(200);
     this.res.end();
   }
+}
+
+function saveProgress() {
+  postMessage("saved");
 }
 
 function postMessage(response) {
