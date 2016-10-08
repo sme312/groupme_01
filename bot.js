@@ -37,7 +37,7 @@ function respond() {
 
 function saveProgress() {
   //int number = Math.random();
-  postMessage(Math.random());
+  postMessage("number");
 }
 
 function postMessage(response) {
