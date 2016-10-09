@@ -143,7 +143,7 @@ function saveProgress() {
 	
 
 
-	postMessage(savecode);
+	postMessage("savecode");
 }
 
 function postMessage(response) {
