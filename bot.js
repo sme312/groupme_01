@@ -22,7 +22,7 @@ var combat = false;
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
       botRegexKya = /(.|)*kya!~/;
-      botname = /(.|)*kyaa!~/;
+      botname = /(.|)*asdf/;
       botsave = /\bsave\b/;
       botcombat = /^cambat^/
   
