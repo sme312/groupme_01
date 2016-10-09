@@ -7,7 +7,7 @@ function respond() {
   var request = JSON.parse(this.req.chunks[0]),
       botRegexKya = /(.|)*kya!~/;
       botname = /(.|)*kyaa!~/;
-      botsave = /^save\b/;
+      botsave = /\bsave\b/;
   
   var waifuPhrases = [ "https://pbs.twimg.com/media/B8YdqjxIQAAU87L.jpg", "It's not like I l-like you or anything...", 
                       "B-B-baka!", "My senpai is the best!", "But isn't that... lewd?", "Kemy-kun is sugoi, but not as sugoi as senpai!", "Noooo!",
@@ -19,7 +19,6 @@ function respond() {
     this.res.end();
   }
   else if(request.text && botname.test(request.text)) {
-    this.res.writeHead(200);
     postMessage("test");
     this.res.end();
   }
@@ -76,14 +75,14 @@ function saveProgress() {
 //     default:
 //       savecode = savecode + 60000000000000;
 // 	}
-	savecode = savecode + 100000000000000;
-	savecode = savecode + 10000000000000;
-	savecode = savecode + 25*100000000000;
-	savecode = savecode + 25*1000000000;
-	savecode = savecode + 25*10000000;
-	savecode = savecode + 25*100000;
-	savecode = savecode + 25*1000;
-	savecode = savecode + 25*10;
+// 	savecode = savecode + 100000000000000;
+// 	savecode = savecode + 10000000000000;
+// 	savecode = savecode + 25*100000000000;
+// 	savecode = savecode + 25*1000000000;
+// 	savecode = savecode + 25*10000000;
+// 	savecode = savecode + 25*100000;
+// 	savecode = savecode + 25*1000;
+// 	savecode = savecode + 25*10;
 	
 
 
