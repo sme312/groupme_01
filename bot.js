@@ -21,22 +21,12 @@ var combat = false;
 
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
-      botRegexKya = /(.|)*kya!~/;
       botname = /(.|)*asdf/;
       botsave = /\bsave\b/;
-      botcombat = /^cambat^/
+      botcombat = /^cambat^/;
   
-  
-  var waifuPhrases = [ "https://pbs.twimg.com/media/B8YdqjxIQAAU87L.jpg", "It's not like I l-like you or anything...", 
-                      "B-B-baka!", "My senpai is the best!", "But isn't that... lewd?", "Kemy-kun is sugoi, but not as sugoi as senpai!", "Noooo!",
-                     "http://i0.kym-cdn.com/photos/images/facebook/000/240/558/d76.jpg", "http://2.bp.blogspot.com/-6hX2FngcmZk/U1VlHs5CfNI/AAAAAAAAQNI/yxSWLiV-z94/s1600/waifu.png"]
-
-  if(request.text && botRegexKya.test(request.text)) {
-    this.res.writeHead(200);
-    postMessage(waifuPhrases[getRandomInt(0,waifuPhrases.length)]);
-    this.res.end();
-  }
-  else if(request.text && botname.test(request.text)) {
+ 
+ if(request.text && botname.test(request.text)) {
     postMessage("test");
     this.res.end();
   }
