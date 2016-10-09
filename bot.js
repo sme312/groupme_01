@@ -23,8 +23,8 @@ function respond() {
   var request = JSON.parse(this.req.chunks[0]),
       botname = /(.|)*asdf/;
       botsave = /\bsave\b/;
-      botcombat = /^cambat^/;
-  
+      botcombat = /combat/;
+}
  
  if(request.text && botname.test(request.text)) {
     postMessage("test");
