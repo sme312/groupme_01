@@ -53,62 +53,62 @@ var savecode = 0;
 var race = "Human";
 switch(race){
 case "Human":
-savecode = savecode + 100000000000000; 
+savecode = savecode + 1000000000000000; 
 break;
 case "Android":
-savecode = savecode + 200000000000000;
+savecode = savecode + 2000000000000000;
 break;
 case "Glorgok":
-savecode = savecode + 300000000000000;
+savecode = savecode + 3000000000000000;
 break;
 case "Ikatrians":
-savecode = savecode + 400000000000000;
+savecode = savecode + 4000000000000000;
 break;
 case "Zolts":
-savecode = savecode + 500000000000000;
+savecode = savecode + 5000000000000000;
 break;
 }
 var charClass = "Warrior";
 switch(charClass){
 case "Warrior":
-savecode = savecode + 10000000000000;
+savecode = savecode + 100000000000000;
 break;
 case "Rogue":
-savecode = savecode + 20000000000000;
+savecode = savecode + 200000000000000;
 break;
 case "Ranger":
-savecode = savecode + 30000000000000;
+savecode = savecode + 300000000000000;
 break;
 case "Berzerker":
-savecode = savecode + 40000000000000;
+savecode = savecode + 400000000000000;
 break;
 case "Xenomancer":
-savecode = savecode + 50000000000000;
+savecode = savecode + 500000000000000;
 break;
 }
-savecode = savecode + attack * 100000000000;
-savecode = savecode + defense * 1000000000;
-savecode = savecode + evasiveness * 10000000;
-savecode = savecode + accuracy * 100000;
-savecode = savecode + hp * 1000;
-savecode = savecode + speed *10;
+savecode = savecode + attack * 1000000000000;
+savecode = savecode + defense * 10000000000;
+savecode = savecode + evasiveness * 100000000;
+savecode = savecode + accuracy * 1000000;
+savecode = savecode + hp * 10000;
+savecode = savecode + speed *100;
 savecode = savecode + checkpoint;
 encode(savecode);
 }
 
 function encode(saveCode){
 var digitArray = [];
-for(i = 0; i < 15; i++){
+for(i = 0; i < 16; i++){
 digitArray[i] = saveCode % 10;
 saveCode = saveCode - digitArray[i];
 saveCode = saveCode / 10;
 }
 var charArray = [];
-for(i = 0; i < 15; i++){
+for(i = 0; i < 16; i++){
 charArray[i] = String.fromCharCode(97 + digitArray[i]);
 }
 var charSaveCode = '';
-for (i = 0; i < 15; i++){
+for (i = 0; i < 16; i++){
 charSaveCode = charSaveCode + charArray[i];
 }
 postMessage("Your saved game code is: " + charSaveCode.toString());
@@ -117,8 +117,8 @@ postMessage("Your saved game code is: " + charSaveCode.toString());
 
 function decode(saveCode){
 var digitArray = [];
-for(i = 0; i < 15; i++){
-digitArray[14-i] = saveCode[i].charCodeAt() - 97;
+for(i = 0; i < 16; i++){
+digitArray[15-i] = saveCode[i].charCodeAt() - 97;
 }
 characterRace = races[digitArray[0]-1];
 characterClass = chosenClasses[digitArray[1]-1];
@@ -128,9 +128,9 @@ evasiveness = digitArray[7] + digitArray[6] * 10;
 accuracy = digitArray[9] + digitArray[8] * 10;
 hp = digitArray[11] + digitArray[10] * 10;
 speed = digitArray[13] + digitArray[12] * 10;
-checkpoint = digitArray[14];
+checkpoint = digitArray[15] + digitArray[14] *10;
 postMessage("Your attack is: "  + evasiveness);
-
+postMessage(digitArray);
 }
 
 function postMessage(response) {
