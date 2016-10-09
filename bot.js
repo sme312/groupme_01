@@ -2,64 +2,6 @@ var HTTPS = require('https');
 
 var botID = process.env.BOT_ID;
 
-class character{
-	constructor(){
-		this.allCharacterRaces = ["Human", "Android", "Glorgok", "Ikatrians", "Zolts"];
-		this.allCharacterClasses = ["Warrior", "Rogue", "Ranger", "Berzerker", "Xenomancer"];
-	}
-//	character name functions
-	setCharacterName( characterName ){
-		this.characterName = characterName;
-	}
-	getCharacterName(){
-		return this.characterName;
-	}
-//	character races
-	setCharacterRace( characterRace ){
-		this.characterRace = characterRace;
-	}
-	printAllCharacterRaces(){
-		this.res.writeHead(200);
-		for( var i = 0; i < 5; i++){
-			postMessage( this.allCharacterRaces[i] );
-		}
-		this.res.end();
-		return allCharacterRaces;
-	}
-	getCharcterRace(){
-		return this.characterRace;
-	}
-//	gender
-	setGender( characterGender ){
-		if( characterGender !== "male" || characterGender !== "female "){
-			return;
-		}
-		if(characterGender === "male" ){
-			this.characterGender = "male";
-		}
-		else{
-			this.characterGender = "female";
-		}
-	}
-
-	getGender(){
-		return this.characterGender;
-	}
-//	classes
-	setClass( className ){
-		this.characterClass = className;
-	}
-	printAllClasses(){
-		this.res.writeHead(200);
-		for( var i = 0; i < 5; i++ ){
-			postMessage( this.allCharacterClasses[i] );
-		}
-		this.res.end();
-	}
-	getCharacterClass(){
-		return this.characterClass;
-	}
-};
 
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
@@ -94,46 +36,48 @@ function respond() {
 
 function saveProgress() {
 	var saveCode = 0;
-	var race = character.getCharacterRace;
-	switch(race){
-		case "Human":
-			savecode = savecode + 100000000000000; 
-			break;
-		case "Android":
-			savecode = savecode + 200000000000000;
-			break;
-		case "Glorgok":
-			savecode = savecode + 300000000000000;
-			break;
-		case "Ikatrians":
-			savecode = savecode + 400000000000000;
-			break;
-		case "Zolts":
-			savecode = savecode + 500000000000000;
-			break;
-    default:
-      savecode = savecode + 600000000000000;
-	}
-	var cclass = character.getCharacterClass;
-	switch(cclass){
-		case "Warrior":
-			savecode = savecode + 10000000000000;
-			break;
-		case "Rogue":
-			savecode = savecode + 20000000000000;
-			break;
-		case "Ranger":
-			savecode = savecode + 30000000000000;
-			break;
-		case "Berzerker":
-			savecode = savecode + 40000000000000;
-			break;
-		case "Xenomancer":
-			savecode = savecode + 50000000000000;
-			break;
-    default:
-      savecode = savecode + 60000000000000;
-	}
+	//var race = character.getCharacterRace;
+// 	switch(race){
+// 		case "Human":
+// 			savecode = savecode + 100000000000000; 
+// 			break;
+// 		case "Android":
+// 			savecode = savecode + 200000000000000;
+// 			break;
+// 		case "Glorgok":
+// 			savecode = savecode + 300000000000000;
+// 			break;
+// 		case "Ikatrians":
+// 			savecode = savecode + 400000000000000;
+// 			break;
+// 		case "Zolts":
+// 			savecode = savecode + 500000000000000;
+// 			break;
+//     default:
+//       savecode = savecode + 600000000000000;
+// 	}
+// 	var cclass = character.getCharacterClass;
+// 	switch(cclass){
+// 		case "Warrior":
+// 			savecode = savecode + 10000000000000;
+// 			break;
+// 		case "Rogue":
+// 			savecode = savecode + 20000000000000;
+// 			break;
+// 		case "Ranger":
+// 			savecode = savecode + 30000000000000;
+// 			break;
+// 		case "Berzerker":
+// 			savecode = savecode + 40000000000000;
+// 			break;
+// 		case "Xenomancer":
+// 			savecode = savecode + 50000000000000;
+// 			break;
+//     default:
+//       savecode = savecode + 60000000000000;
+// 	}
+	savecode = savecode + 100000000000000;
+	savecode = savecode + 10000000000000;
 	savecode = savecode + 25*100000000000;
 	savecode = savecode + 25*1000000000;
 	savecode = savecode + 25*10000000;
