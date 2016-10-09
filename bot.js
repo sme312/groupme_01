@@ -86,7 +86,7 @@ function saveProgress() {
 	
 
 
-	postMessage("savecode");
+	postMessage(savecode.toString());
 }
 
 function postMessage(response) {
