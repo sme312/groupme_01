@@ -2,6 +2,21 @@ var HTTPS = require('https');
 
 var botID = process.env.BOT_ID;
 
+var attack_yours = 70;
+var defense_yours = 55;
+var accuracy_yours = 45;
+var evasiveness_yours = 40;
+var speed_yours = 40;
+var hp_yours = 50;
+var attack_enemy = 55;
+var defense_enemy = 55;
+var accuracy_enemy = 70;
+var evasiveness_enemy = 55;
+var speed_enemy = 35;
+var hp_enemy = 50;
+var accuracy_check = 0;
+var combat_check = false;
+var go_into_combat = true;
 
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
@@ -26,6 +41,31 @@ function respond() {
     saveProgress();
     this.res.end();
   }
+else if (combat_check = false && go_into_combat = true) {
+combat();	
+}
+else if (combat_check = true && hp_yours > 0 && hp_enemy > 0) {
+combat();
+}
+else if (combat_check = true && hp_yours > 0 && hp_enemy <= 0) {
+window.alert("You won GG EZ \n");
+combat_check = false;
+go_into_combat = false;
+}
+else if (combat_check = true && hp_yours <= 0 && hp_enemy > 0) {
+window.alert("Your opponent won GG NO REEEEEEEEEEEEEEEEEEEEEE \n");
+combat_check = false;
+go_into_combat = false;
+}
+else if (combat_check = true && hp_yours <=0 && hp_enemy <= 0) {
+window.alert("You both killed each other RIPIPIP \n");
+combat_check = false;
+go_into_combat = false;
+
+}
+else if (combat_check = false && go_into_combat = false) {
+window.alert("Your are not in combat \n");
+}	
   else {
     console.log("Nothing happened");
     this.res.writeHead(200);
@@ -33,60 +73,33 @@ function respond() {
   }
 }
 
-function saveProgress() {
-	var saveCode = 0;
-	//var race = character.getCharacterRace;
-// 	switch(race){
-// 		case "Human":
-// 			savecode = savecode + 100000000000000; 
-// 			break;
-// 		case "Android":
-// 			savecode = savecode + 200000000000000;
-// 			break;
-// 		case "Glorgok":
-// 			savecode = savecode + 300000000000000;
-// 			break;
-// 		case "Ikatrians":
-// 			savecode = savecode + 400000000000000;
-// 			break;
-// 		case "Zolts":
-// 			savecode = savecode + 500000000000000;
-// 			break;
-//     default:
-//       savecode = savecode + 600000000000000;
-// 	}
-// 	var cclass = character.getCharacterClass;
-// 	switch(cclass){
-// 		case "Warrior":
-// 			savecode = savecode + 10000000000000;
-// 			break;
-// 		case "Rogue":
-// 			savecode = savecode + 20000000000000;
-// 			break;
-// 		case "Ranger":
-// 			savecode = savecode + 30000000000000;
-// 			break;
-// 		case "Berzerker":
-// 			savecode = savecode + 40000000000000;
-// 			break;
-// 		case "Xenomancer":
-// 			savecode = savecode + 50000000000000;
-// 			break;
-//     default:
-//       savecode = savecode + 60000000000000;
-// 	}
-// 	savecode = savecode + 100000000000000;
-// 	savecode = savecode + 10000000000000;
-// 	savecode = savecode + 25*100000000000;
-// 	savecode = savecode + 25*1000000000;
-// 	savecode = savecode + 25*10000000;
-// 	savecode = savecode + 25*100000;
-// 	savecode = savecode + 25*1000;
-// 	savecode = savecode + 25*10;
-	
+function combatYou(){
+combat_check = true;
+accuracy_check = (Math.floor(Math.random()* (100 - 0)) + 0);
+if (accuracy_check <= accuracy_yours) {
+hp_enemy = hp_enemy - (attack_yours*defense_enemy*.01);
+hp_enemy_string = Integer.toString(hp_enemy)
+//window.alert("Your attack hit, your enemy's health is " + hp_enemy_string +"\n");
+return hp_enemy_string;
+}
+else if (accuracy_check > accuracy_yours) {
+//window.alert("Your attack did not hit \n");
+return kys = "KYS1";
+}
+}
 
-
-	postMessage(savecode.toString());
+function combatEnemy(){
+accuracy_check = (Math.floor(Math.random()* (100 - 0)) + 0);
+if (accuracy_check <= accuracy_enemy) {
+hp_yours = hp_yours - (attack_enemy*defense_yours*.01);
+hp_yours_string = Integer.toString(hp_yours)
+//window.alert("Your enemy's attack hit, your health is " + hp_yours_string + "\n");
+return hp_yours_string;
+}
+else if (accuracy_check > accuracy_enemy) {
+//window.alert("Your enemy's attack did not hit \n");
+return kys = "KYS2";
+}
 }
 
 function postMessage(response) {
