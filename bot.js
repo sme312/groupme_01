@@ -16,7 +16,7 @@ var chosenClasses = ["Warrior", "Rogue", "Ranger", "Berzerker", "Xenomancer"];
 
 function respond() {
 var request = JSON.parse(this.req.chunks[0]),
-botRegexKya = /(.|)*lol/;
+botRegexKya = /(.|)*pls/;
 botsave = /(.|)*\bsave\b/;
 botsavecode = /(.|)*\breenter\b/;
 
