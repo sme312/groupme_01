@@ -4,11 +4,11 @@ var botID = process.env.BOT_ID;
 
 function respond() {
 var request = JSON.parse(this.req.chunks[0]),
-botTrigger = /(.|)*test/;
+botTrigger = /(.|)*Show me the survey/;
 
 if(request.text && botTrigger.test(request.text)) {
 this.res.writeHead(200);
-postMessage("its good");
+postMessage("No survey :^(");
 this.res.end();
 }
 
