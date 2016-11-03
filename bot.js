@@ -2,14 +2,15 @@ var HTTPS = require('https');
 
 var botID = process.env.BOT_ID;
 
+var lyrics = "have you ever wondered what life is about"
+
 function respond() {
 var request = JSON.parse(this.req.chunks[0]),
-botTrigger = /(.|)*Show me the survey/;
-
+botTrigger = /(.|)*hey now/;
+  
 if(request.text && botTrigger.test(request.text)) {
 this.res.writeHead(200);
-//postMessage("https://www.surveymonkey.com/r/VSFH55Z");
-postMessage("No survey :^(");
+postMessage(lyrics);
 this.res.end();
 }
 
